@@ -1,10 +1,10 @@
 package main
 
 import (
-	"awesomeProject/models"
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"linuxPhoneTransition/models"
 )
 
 func ConnectMysql() {

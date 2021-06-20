@@ -1,9 +1,9 @@
 package main
 
 import (
-	"awesomeProject/models"
 	"github.com/gorilla/websocket"
 	"github.com/jinzhu/gorm"
+	"linuxPhoneTransition/models"
 	"log"
 	"net/http"
 )

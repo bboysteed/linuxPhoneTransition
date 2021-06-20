@@ -1,24 +1,36 @@
 <template>
+  <div  :style="{backgroundImage:'url('+bgimg+')',
+      backgroundRepeat:'repeat',
+        backgroundSize:'100% 100%'}">
+
+
   <el-card
+      class="chat-card"
       :body-style="{ padding: '0px'}"
       shadow="hover"
-      style="margin-top: 10px;border-radius: 10px"
+      style="border-radius: 10px;background-color: transparent"
   >
-    <div v-for="tag in tags" :key="tag.ID" :class="tag.role==='pc'?'chat_item_left':'chat_item_right'">
-      <img :src="tag.role==='pc'?pc_img:phone_img" alt="" class="role_img">
-      <div :class="tag.role==='pc'?'content_box_left':'content_box_right'">
-        {{ tag.content }}
+
+
+    <div class="chatWrapper" id="chatwrapper_">
+      <div v-for="tag in tags" :key="tag.ID" :class="tag.role==='pc'?'chat_item_left':'chat_item_right'">
+        <img :src="tag.role==='pc'?pc_img:phone_img" alt="" class="role_img">
+        <div :class="tag.role==='pc'?'content_box_left':'content_box_right'">
+          {{ tag.content }}
+        </div>
       </div>
     </div>
 
     <el-input
-
+        ref="inputref"
+        id="inputchat"
         class="input_class"
         placeholder="请输入内容"
         v-model="textarea"
+        @keyup.enter.native="send"
+
     >
       <el-button
-
           class="sub_button"
           slot="append"
           @click="send"
@@ -29,22 +41,20 @@
         发送
       </el-button>
     </el-input>
-
-
-
   </el-card>
+  </div>
 </template>
-
 <script>
 export default {
   name: "messageBox",
   data() {
     return {
+      bgimg: require("@/assets/mountain.jpeg"),
       textarea: "",
       pc_img: require('@/assets/img.png'),
       phone_img: require('@/assets/img_1.png'),
       tags: [],
-      wspath: "ws://" + window.location.href.split(":")[1] + ":9000/chatSocket",
+      wspath: "ws://" + window.location.href.split(":")[1] + "chatSocket",
       socket: "",
       role: "",
     }
@@ -53,6 +63,17 @@ export default {
     this.setRole()
     this.initws()
     this.getTags()
+  },
+  updated() {
+    let div = document.getElementById("chatwrapper_")
+    div.scrollTop = div.scrollHeight
+    this.$nextTick(()=>{
+      this.$refs.inputref.focus();
+    })
+
+
+    // let inp = document.getElementById("inputchat")
+
   },
   methods: {
     setRole() {
@@ -75,8 +96,6 @@ export default {
         this.socket.onopen = this.open
         this.socket.onerror = this.error
         this.socket.onmessage = this.getMessage
-
-
       }
     },
     open: function () {
@@ -88,7 +107,6 @@ export default {
     getMessage: function (msg) {
       let data = JSON.parse(msg.data)
       this.tags.push(data)
-      console.log(this.tags)
 
     },
     send: function () {
@@ -103,6 +121,8 @@ export default {
       // this.tags.push(data)
       this.socket.send(JSON.stringify(data))
       this.textarea = ""
+      this.$refs.inputref.focus()
+
     },
     close: function () {
       console.log("socket已经关闭")
@@ -137,6 +157,7 @@ export default {
 }
 
 .chat_item_right {
+
   max-width: 800px;
   /*width: 100%;*/
   padding: 10px 10px;
@@ -191,6 +212,20 @@ export default {
 .sub_button{
   /*margin: 10px 10px;*/
   /*padding: 10px 10px;*/
+  /*margin-bottom: 300px;*/
+}
+
+.chatWrapper{
+  height: 500px;
+  overflow: auto;
+}
+
+.chat-card{
+  /*margin-bottom: 100px;*/
+}
+
+.imgclass{
+
 }
 </style>
 

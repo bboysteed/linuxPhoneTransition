@@ -1,9 +1,9 @@
 package commom
 
 import (
-	"awesomeProject/models"
 	"fmt"
 	"io/ioutil"
+	"linuxPhoneTransition/models"
 	"log"
 	"os"
 	"path/filepath"

@@ -1,10 +1,12 @@
 <template>
   <div>
     <el-card
-        :body-style="{ padding: '0px' }"
+        :body-style="{ padding: '0px'}"
         shadow="hover"
+
+
     >
-      <img src="@/assets/img_4.png" style="max-width: 350px">
+
       <el-upload
           :action=uploadUrl
           drag

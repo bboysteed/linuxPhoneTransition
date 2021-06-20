@@ -1,10 +1,13 @@
 <template>
   <div id="app">
 
-    <Upload></Upload>
-    <file-table></file-table>
+
+
     <message-box></message-box>
-<!--    <HelloWorld/>-->
+    <file-table></file-table>
+    <Upload></Upload>
+
+    <!--    <HelloWorld/>-->
 
   </div>
 </template>
@@ -20,6 +23,11 @@ export default {
     // HelloWorld,
     fileTable,
     messageBox
+  },
+  data(){
+    return {
+    }
+
   }
 }
 </script>
@@ -31,4 +39,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+
+
 </style>

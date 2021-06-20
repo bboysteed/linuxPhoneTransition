@@ -1,4 +1,4 @@
-module awesomeProject
+module linuxPhoneTransition
 
 go 1.16
 

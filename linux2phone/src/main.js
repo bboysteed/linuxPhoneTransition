@@ -17,9 +17,9 @@ Vue.use(ElementUI,{size:'small',zIndex:2000})
 
 
 if (process.env.NODE_ENV==='development'){
-  // axios.defaults.baseURL = 'http://10.135.234.160:9000/'
+  axios.defaults.baseURL = 'http://10.135.168.120:9000/'
   // axios.defaults.baseURL = 'http://192.168.70.137:9000/'
-  axios.defaults.baseURL = 'http://192.168.50.168:9000/'
+  // axios.defaults.baseURL = 'http://192.168.50.168:9000/'
 }else{
   axios.defaults.baseURL='/'
 }

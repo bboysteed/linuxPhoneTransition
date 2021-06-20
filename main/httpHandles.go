@@ -1,11 +1,12 @@
 package main
 
 import (
-	"awesomeProject/commom"
-	"awesomeProject/models"
+
 	"encoding/json"
 	"fmt"
 	"io"
+	"linuxPhoneTransition/commom"
+	"linuxPhoneTransition/models"
 	"log"
 	"net/http"
 	"net/url"

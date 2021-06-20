@@ -1,9 +1,9 @@
 package main
 
 import (
-	"awesomeProject/models"
 	"fmt"
 	"github.com/gorilla/websocket"
+	"linuxPhoneTransition/models"
 	"log"
 	"net/http"
 	"time"
