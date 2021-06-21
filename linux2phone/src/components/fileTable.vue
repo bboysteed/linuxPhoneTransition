@@ -3,7 +3,7 @@
     <el-card
         shadow="hover"
         :body-style="{ padding: '0px' }"
-        style="margin-top: 10px"
+        style="margin-top: 10px;border-radius: 10px"
         >
 
     <el-table
@@ -82,7 +82,7 @@ export default {
   methods: {
     handleDownload(index, row) {
       console.log(index, row)
-      let downUrl = "http://"+window.location.href.split(":")[1]+"download/"+row.name
+      let downUrl = "http://"+window.location.href.split(":")[1]+":9000/download/"+row.name
       this.downloadFile(downUrl)
       // let param = this.$qs.stringify({
       //   fileName:row.name

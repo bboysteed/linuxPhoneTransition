@@ -1,47 +1,59 @@
 <template>
-  <div  :style="{backgroundImage:'url('+bgimg+')',
+  <div :style="{backgroundImage:'url('+bgimg+')',
       backgroundRepeat:'repeat',
         backgroundSize:'100% 100%'}">
 
 
-  <el-card
-      class="chat-card"
-      :body-style="{ padding: '0px'}"
-      shadow="hover"
-      style="border-radius: 10px;background-color: transparent"
-  >
+    <el-card
+        class="chat-card"
+        :body-style="{ padding: '0px'}"
+        shadow="hover"
+        style="border-radius: 10px;background-color: transparent"
+    >
 
 
-    <div class="chatWrapper" id="chatwrapper_">
-      <div v-for="tag in tags" :key="tag.ID" :class="tag.role==='pc'?'chat_item_left':'chat_item_right'">
-        <img :src="tag.role==='pc'?pc_img:phone_img" alt="" class="role_img">
-        <div :class="tag.role==='pc'?'content_box_left':'content_box_right'">
-          {{ tag.content }}
+      <div class="chatWrapper" id="chatwrapper_">
+        <div v-for="tag in tags" :key="tag.ID" :class="tag.role==='pc'?'chat_item_left':'chat_item_right'">
+          <img :src="tag.role==='pc'?pc_img:phone_img" alt="" class="role_img">
+          <div :class="tag.role==='pc'?'content_box_left':'content_box_right'">
+            {{ tag.content }}
+          </div>
         </div>
       </div>
-    </div>
+      <!--        @keyup.enter.native="send"-->
+      <el-row justify="start">
+        <el-col :span="20">
+          <el-input
+              ref="inputref"
+              id="inputchat"
+              class="input_class"
+              type="textarea"
+              placeholder="请输入内容"
+              v-model="textarea"
+              @keypress.shift.enter.native="send"
+          >
+          </el-input>
 
-    <el-input
-        ref="inputref"
-        id="inputchat"
-        class="input_class"
-        placeholder="请输入内容"
-        v-model="textarea"
-        @keyup.enter.native="send"
+        </el-col>
+        <el-col :span="4" style="padding-top: 5px">
+          <el-button
+              class="sub_button"
+              @click="send"
+              type="primary"
+              round
+             r
+          >
+            发送
+          </el-button>
 
-    >
-      <el-button
-          class="sub_button"
-          slot="append"
-          @click="send"
-          type="primary"
-          round
-          size="small"
-      >
-        发送
-      </el-button>
-    </el-input>
-  </el-card>
+
+        </el-col>
+
+      </el-row>
+
+      <!--        slot="append"-->
+
+    </el-card>
   </div>
 </template>
 <script>
@@ -54,7 +66,7 @@ export default {
       pc_img: require('@/assets/img.png'),
       phone_img: require('@/assets/img_1.png'),
       tags: [],
-      wspath: "ws://" + window.location.href.split(":")[1] + "chatSocket",
+      wspath: "ws://" + window.location.href.split(":")[1] + ":9000/chatSocket",
       socket: "",
       role: "",
     }
@@ -67,7 +79,7 @@ export default {
   updated() {
     let div = document.getElementById("chatwrapper_")
     div.scrollTop = div.scrollHeight
-    this.$nextTick(()=>{
+    this.$nextTick(() => {
       this.$refs.inputref.focus();
     })
 
@@ -206,25 +218,35 @@ export default {
 }
 
 .input_class {
-
-  padding: 10px 5px;
+  /*float: left;*/
+  /*display: block;*/
+  padding: 5px 5px ;
 }
-.sub_button{
-  /*margin: 10px 10px;*/
+.el-button{
+  margin: 4px;
+}
+.sub_button {
+  height: 50px;
+  /*padding: 900px;  !*float: right;*!*/
+  /*height: ;*/
+  /*margin-top: 10px;*/
+  /*font-size: 20px;*/
   /*padding: 10px 10px;*/
   /*margin-bottom: 300px;*/
+  /*display: block;*/
+  /*float: right;*/
 }
 
-.chatWrapper{
+.chatWrapper {
   height: 500px;
   overflow: auto;
 }
 
-.chat-card{
+.chat-card {
   /*margin-bottom: 100px;*/
 }
 
-.imgclass{
+.imgclass {
 
 }
 </style>

@@ -7,7 +7,6 @@
           label="file"
           counter
           show-size
-
           class="file"
           :disabled="loading.uploadIsLoading"
           :loading="loading.uploadIsLoading"

@@ -116,7 +116,8 @@ func uploadFileHandler(w http.ResponseWriter, req *http.Request) {
 				w.Write([]byte(fmt.Sprintf("unknown error,fileName=%s,fileSize=%d,err:%s", f.Filename, f.Size, err_.Error())))
 				return
 			}
-
+			abStorePath,_:=filepath.Abs(storePath)
+			os.MkdirAll(abStorePath,0777)
 			path := filepath.Join(storePath, f.Filename)
 			dst, err1 := os.Create(path)
 			if err1 != nil {

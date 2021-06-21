@@ -3,6 +3,7 @@
     <el-card
         :body-style="{ padding: '0px'}"
         shadow="hover"
+        style="margin-bottom: 40px"
 
 
     >
