@@ -29,20 +29,23 @@ var (
 
 
 func main() {
-	initSome()
+	//initSome()
 	http.Handle("/",http.FileServer(http.Dir("dist/")))
 	http.HandleFunc("/upload", uploadFileHandler)
 	http.HandleFunc("/download/", downloadFileHandler)
 	http.HandleFunc("/getFiles", getFileHandler)
 	http.HandleFunc("/chatSocket", chatWsHandler)
+	http.HandleFunc("/console", consoleWsHandler)
 	http.HandleFunc("/getMsgs", getMsgsHandler)
 	//http.HandleFunc("/sendMsg", sendMsgHandler)
-	log.Print("Server started on localhost:9000...")
-	err := http.ListenAndServe(":9000", nil)
+	log.Print("Server started on localhost:10000...")
+	err := http.ListenAndServe(":10000", nil)
 	if err != nil {
-		log.Printf("listen at 9000 failed,err is: %v\n", err)
+		log.Printf("listen at 10000 failed,err is: %v\n", err)
 	}
 }
+
+
 
 
 

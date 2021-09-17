@@ -8,6 +8,10 @@ import qs from 'qs'
 
 import VueCodeMirror from 'vue-codemirror'
 import 'codemirror/lib/codemirror.css'
+import 'xterm/css/xterm.css'
+import 'xterm-addon-fit'
+
+
 Vue.use(VueCodeMirror)
 
 Vue.prototype.$ajax = axios

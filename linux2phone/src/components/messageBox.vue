@@ -28,7 +28,7 @@
               id="inputchat"
               class="input_class"
               type="textarea"
-              placeholder="请输入内容"
+              placeholder="请输入内容(shift+enter发送)"
               v-model="textarea"
               @keypress.shift.enter.native="send"
           >
@@ -66,7 +66,8 @@ export default {
       pc_img: require('@/assets/img.png'),
       phone_img: require('@/assets/img_1.png'),
       tags: [],
-      wspath: "ws://" + window.location.href.split(":")[1] + ":9000/chatSocket",
+      // wspath: "ws://" + window.location.href.split(":")[1] + ":9000/chatSocket",
+      wspath: "ws://"+window.location.href.split("//")[1]+"chatSocket",
       socket: "",
       role: "",
     }

@@ -45,8 +45,8 @@ export default {
   },
   methods: {
     uploadFile() {
-      // let url = window.location.href+"upload/"
-      const url = "http://192.168.50.168:9000/upload"
+      let url = window.location.href+"upload/"
+      // const url = "http://192.168.50.168:9000/upload"
       let formData = new FormData()
       formData.append('file', this.fileValue)
       let config = {

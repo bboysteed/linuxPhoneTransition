@@ -7,7 +7,14 @@
     <file-table></file-table>
     <Upload></Upload>
 
-    <!--    <HelloWorld/>-->
+    <section>
+      <div id="log" style="margin-top:20px;">
+        <Console :socketURI="socketURI"></Console>
+      </div>
+    </section>
+
+
+      <!--    <HelloWorld/>-->
 
   </div>
 </template>
@@ -16,9 +23,11 @@
 import messageBox from "@/components/messageBox";
 import fileTable from "@/components/fileTable";
 import Upload from "@/components/Upload";
+import Console from "@/components/Console";
 export default {
   name: 'App',
   components: {
+    Console,
     Upload,
     // HelloWorld,
     fileTable,
@@ -26,6 +35,9 @@ export default {
   },
   data(){
     return {
+      socketURI:'ws://127.0.0.1:10000/console'
+
+
     }
 
   }
