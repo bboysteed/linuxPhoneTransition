@@ -2,7 +2,7 @@
 linux2phone/node_modules
 /dist
 /files
-
+/vendor
 
 # local env files
 .env.local
