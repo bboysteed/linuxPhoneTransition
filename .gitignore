@@ -3,6 +3,7 @@ linux2phone/node_modules
 /dist
 /files
 /vendor
+/test
 
 # local env files
 .env.local
